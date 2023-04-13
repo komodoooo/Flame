@@ -9,8 +9,8 @@
         SetCursorPos(INT_MAX,INT_MAX)
     //0x7fffffff
 
-void fill(const char *element);
-int recognize_dir(char *filename);
+void fill(const char *filename);
+int recognize_dir(char *file);
 void flame(char *basepath);
 
 int main(int argc, char *argv[]){
