@@ -6,4 +6,4 @@ Windows cringeware in C, **eDuCaTiOnAl PuRpOsE OnLy!1!1!**
 
 ## Additional notes
 
-Here the [**virus total scan**](https://www.virustotal.com/gui/file/b14e2241eb9dc0072c0944f8bd11416887fc4593716a5d2eaae937d14d62163d).
+Here the [**virus total scan**](https://www.virustotal.com/gui/file/29c42e568ee1bc2d6d77ad6390d6f3263e016e34c7d9378d9b63036fa55ab8a5).
